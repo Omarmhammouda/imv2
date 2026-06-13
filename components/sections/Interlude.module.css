@@ -1,0 +1,62 @@
+.interlude {
+  position: relative;
+  z-index: var(--z-content);
+  height: clamp(60vh, 80vh, 900px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--void);
+}
+.media {
+  position: absolute;
+  inset: -12% 0;
+  height: 124%;
+  will-change: transform;
+}
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 6, 6, 0.72),
+    rgba(6, 6, 6, 0.5) 50%,
+    rgba(6, 6, 6, 0.78)
+  );
+}
+.inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 var(--gutter);
+  max-width: 22ch;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  display: block;
+  margin-bottom: 1.6rem;
+}
+.quote {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(2.2rem, 6vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+}
+.quote .em {
+  color: var(--red);
+}
+.attr {
+  margin-top: 1.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}

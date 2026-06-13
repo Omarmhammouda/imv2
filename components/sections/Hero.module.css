@@ -1,0 +1,131 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(5.5rem, 11vh, 9rem) var(--gutter) clamp(1.5rem, 4vh, 3rem);
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+  z-index: 3;
+}
+
+.title {
+  position: absolute;
+  inset: clamp(7rem, 16vh, 12rem) var(--gutter) clamp(6rem, 12vh, 9rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+  z-index: 2;
+}
+.line {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.8;
+  letter-spacing: -0.015em;
+  font-size: var(--fs-mega);
+  color: var(--paper);
+  mix-blend-mode: difference;
+}
+.line.lower {
+  align-self: center;
+}
+
+.tagline {
+  max-width: 30ch;
+  font-size: var(--fs-lead);
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  color: var(--paper);
+}
+.tagline .accent {
+  color: var(--red);
+}
+
+.scrollCue {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.9rem;
+}
+.scrollCue .word {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+.scrollLine {
+  width: 1px;
+  height: 64px;
+  background: var(--hair);
+  position: relative;
+  overflow: hidden;
+}
+.scrollLine::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--red);
+  animation: drop 1.8s var(--ease-inout) infinite;
+}
+@keyframes drop {
+  0% { transform: translateY(-100%); }
+  60%,
+  100% { transform: translateY(300%); }
+}
+
+.index {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--smoke);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+.eyebrow .blip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 12px var(--red-glow);
+}
+
+@media (max-width: 720px) {
+  .title {
+    inset: clamp(6rem, 14vh, 9rem) var(--gutter) clamp(8rem, 16vh, 10rem);
+  }
+  .line {
+    font-size: clamp(3.5rem, 22vw, 9rem);
+  }
+  .tagline {
+    font-size: 1.05rem;
+  }
+  .hideMobile {
+    display: none;
+  }
+}

@@ -1,0 +1,159 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-preloader);
+  overflow: hidden;
+  pointer-events: all;
+}
+
+/* the covering slats that lift away on exit */
+.slats {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--n, 6), 1fr);
+}
+.slat {
+  background: var(--void);
+  border-right: 1px solid var(--hair-2);
+  will-change: transform;
+}
+.slat:last-child {
+  border-right: 0;
+}
+
+/* foreground UI above the slats */
+.ui {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  will-change: opacity;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.brandTag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+.brandTag .blip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 12px var(--red-glow);
+  animation: blink 1.1s steps(2) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.status {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  text-align: right;
+  min-height: 1em;
+}
+
+.center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.word {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.84;
+  letter-spacing: -0.015em;
+  font-size: clamp(3rem, 12vw, 12rem);
+  color: var(--paper);
+  overflow: hidden;
+}
+.word > span {
+  display: block;
+  will-change: transform;
+}
+.word.two {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--paper);
+}
+
+.bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.counter {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.5rem, 12vw, 11rem);
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  font-variant-numeric: tabular-nums;
+}
+.counter sup {
+  font-family: var(--font-mono);
+  font-size: 0.16em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  vertical-align: super;
+  color: var(--smoke);
+}
+.meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  text-align: right;
+  max-width: 40ch;
+}
+
+/* progress hairline */
+.track {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--hair-2);
+}
+.fill {
+  height: 100%;
+  width: 0%;
+  background: var(--red);
+  box-shadow: 0 0 18px var(--red-glow);
+}
+
+@media (max-width: 640px) {
+  .word {
+    font-size: 18vw;
+  }
+}
