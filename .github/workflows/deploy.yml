@@ -35,6 +35,9 @@ jobs:
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          # auto-enable Pages (source = GitHub Actions) on first run
+          enablement: true
 
       - name: Build static export
         run: pnpm build
