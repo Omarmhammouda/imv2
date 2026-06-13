@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { state } from "@/lib/store";
+import { asset } from "@/lib/asset";
 
 type Props = {
   src?: string;
@@ -41,6 +42,8 @@ export default function VideoBackground({
   }, [src]);
 
   const showVideo = src && !state.reducedMotion && state.quality !== "low";
+  const posterUrl = asset(poster);
+  const srcUrl = src ? asset(src) : undefined;
 
   return (
     <div
@@ -62,15 +65,15 @@ export default function VideoBackground({
           loop
           playsInline
           preload="metadata"
-          poster={poster}
+          poster={posterUrl}
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         >
-          <source src={src} type="video/mp4" />
+          <source src={srcUrl} type="video/mp4" />
         </video>
       ) : (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={poster}
+          src={posterUrl}
           alt=""
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />

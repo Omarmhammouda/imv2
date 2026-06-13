@@ -5,6 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { state } from "@/lib/store";
+import { asset } from "@/lib/asset";
 import SprayBurst from "./SprayBurst";
 
 const TWO_PI = Math.PI * 2;
@@ -18,7 +19,7 @@ const GLB_YAW = Math.PI;
 /* ----------------------------- GLB model ----------------------------- */
 
 function CanModel() {
-  const { scene } = useGLTF(GLB_PATH);
+  const { scene } = useGLTF(asset(GLB_PATH));
   const model = useMemo(() => {
     const s = scene.clone(true);
     const box = new THREE.Box3().setFromObject(s);
@@ -47,7 +48,7 @@ function CanModel() {
 
   return <primitive object={model} />;
 }
-useGLTF.preload(GLB_PATH);
+useGLTF.preload(asset(GLB_PATH));
 
 /* -------------------------- procedural can --------------------------- */
 
